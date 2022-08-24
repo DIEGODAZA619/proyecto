@@ -1,0 +1,41 @@
+
+<div class="row">
+    <div class="col-1 col-lg-4 "></div>
+        <div class="col-1 col-lg-4 ">
+            <h3>Ingreso de Usuarios</h3>
+            <form [formGroup]="registroForm" >                
+                <div class="mb-3">
+                    <label  class="form-label">NAME</label>
+                    <input type="text" class="form-control" formControlName = "message">
+                </div>                
+                <button class="btn btn-primary" (click) = "ingresar()" [disabled]= "!registroForm.valid" >GUARDAR</button>
+            </form>
+            <div class="alert alert-danger" role="alert"  *ngIf="estadoregistro" >
+                {{resultado}}
+              </div>
+        </div>
+  <div class="col-1 col-lg-4 "></div>
+</div><br><br>
+<h3>Lista datos</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>VALOR1</th>
+            <th>VALOR2</th>
+            <th>VALOR3</th>
+            <th>VALOR4</th>
+            <th>VALOR5</th> 
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dat of datos; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{dat.id}}</td>
+            <td>{{dat.message}}</td>            
+            <td>{{dat.state}}</td>
+            <td>{{dat.fechaRegistro}}</td>
+            <td>{{dat.fechaRecepcion}}</td>
+        </tr>
+    </tbody>
+</table>  

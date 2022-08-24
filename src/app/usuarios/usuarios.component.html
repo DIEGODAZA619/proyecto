@@ -1,0 +1,23 @@
+<p>usuarios works!</p>
+<h3>LISTA DE USUARIOS</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>DOCUMENTO</th>
+            <th>NOMBRES</th>
+            <th>PRIMER APELLIDO</th>
+            <th>SEGUNDO APELLIDO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let dat of datos; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{dat.numero_doc}}</td>
+            <td>{{dat.nombres}}</td>
+            <td>{{dat.primer_apellido}}</td>
+            <td>{{dat.segundo_apellido}}</td>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,90 @@
+<H1>{{titulo}}</H1>
+
+<h3>ESTADO TIENDA: {{ (estado)? 'ABIERTO':'CERRADO' }}</h3>
+
+<h3>CATEGORIAS: {{categorias}}</h3>
+ 
+
+<button (click)="cerrar_tienda()" >{{ (estado)? 'CERRAR TIENDA':'ABRIR TIENDA' }}</button>
+<BR>
+
+<select name="" id="" *ngIf="estado" >
+    <option *ngFor = "let cat of categorias" value="{{cat}}">{{cat}}</option>
+</select>
+
+<br><br><br>
+<h2>REGISTRO PRODUCTOS</h2>
+<form class="row g-3" [formGroup] = "productoForm" >
+   
+  <div class="col-md-4">
+    <label for="inputCity" class="form-label">Ingrese Nombre</label>
+    <input type="text" class="form-control" formControlName = "nombre">
+  </div>
+  <div class="col-md-4">
+    <label for="inputCity" class="form-label">Ingrese Precio</label>
+    <input type="text" class="form-control" formControlName = "precio">
+  </div>
+  <div class="col-md-4">
+    <label for="inputZip" class="form-label">Ingrese Cantidad</label>
+    <input type="text" class="form-control" formControlName = "cantidad">
+  </div>
+
+  <div class="col-12">
+    <button  class="btn btn-primary" (click) = "agregar_productos()" >Agregar producto</button>
+  </div>
+</form>
+
+<h3>{{valordato}}</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">CANTIDAD</th>
+        <th scope="col">CANTIDAD VENTA</th>
+        <th scope="col">SUBTOTAL</th>
+        <th scope="col">ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let prod of productos; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{prod.nombre}}</td>
+        <td>{{prod.precio |currency: "Bs. "}}</td>
+        <td>{{prod.cantidad}}</td>
+        <td> 
+          <input type="number" [value]=cant_venta (change)="cambio($event)">  
+        </td>
+        <td>{{prod.precio * prod.cantidad | currency: "Bs. "}}</td>
+        <td><button class="btn btn-danger" (click) = "eliminar_producto(i)" >X ELIMINAR</button>
+            <button class="btn btn-primary" (click) = "agregar_carrito(prod)" >+ Agregar</button></td>
+      </tr>      
+    </tbody>
+  </table>
+
+  <H1>CARRITO DE COMPRAS</H1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">CANTIDAD</th>
+        <th scope="col">SUB-TOTAL</th>
+        <th scope="col">ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let car of carrito; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{car.nombre}}</td>
+        <td>{{car.precio |currency: "Bs. "}}</td>
+        <td>{{car.cantidad}}</td>
+        <td>{{car.sub_total |currency: "Bs. "}}</td>
+        <td><button class="btn btn-danger" (click)= "eliminar_carrito(i)">X</button></td>
+      </tr>
+    </tbody>
+
+  </table>
+  <h2>TOTAL A PAGAR: {{total_pagar}}</h2>

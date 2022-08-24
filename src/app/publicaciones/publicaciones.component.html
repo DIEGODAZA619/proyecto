@@ -1,0 +1,22 @@
+<p>publicaciones works!!!</p>
+<h1>Lista datos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>VALOR1</th>
+            <th>VALOR2</th>
+            <th>VALOR3</th>
+            <th>VALOR4</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dat of datos; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{dat.userId}}</td>
+            <td>{{dat.id}}</td>            
+            <td>{{dat.title}}</td>
+            <td>{{dat.body}}</td>
+        </tr>
+    </tbody>
+</table>    

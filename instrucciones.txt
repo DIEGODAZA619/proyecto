@@ -1,0 +1,19 @@
+--en caso de no tener instaldo angular
+npm install -g @angular/cli
+
+-- instruccion para descargar los modules
+npm install
+
+
+-- instruccion para iniciar la aplicacion
+
+ng serve --open
+
+
+---PARA DOCKERIZAR 
+
+docker build -t proyecto .
+
+docker run -d -it -p 82:80 proyecto
+
+
